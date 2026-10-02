@@ -1,0 +1,21 @@
+[
+  {
+    "UpdateStageName": "Download pinned Ubuntu x64 CPU runtime",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://github.com/ggml-org/llama.cpp/releases/download/b11338/llama-b11338-bin-ubuntu-x64.tar.gz",
+    "UpdateSourceTarget": "{{$FullBaseDir}}",
+    "UpdateSourceArgs": "runtime.tar.gz",
+    "UnzipUpdateSource": false,
+    "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Extract runtime, create API key, check dependencies",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c 'set -eu\ncd ./yoda-llm/serverfiles\nstage=$(mktemp -d ./extract.XXXXXX)\ntar -xzf runtime.tar.gz -C \"$stage\"\nserver=$(find \"$stage\" -type f -name llama-server -print -quit)\ntest -n \"$server\"\nbindir=$(dirname \"$server\")\ncp -a \"$bindir/.\" .\nchmod +x ./llama-server\nmkdir -p cache\nif [ ! -s api-key.txt ]; then\n  umask 077\n  od -An -N32 -tx1 /dev/urandom | tr -d '\\'' \\n'\\'' > api-key.txt\n  printf '\\''\\n'\\'' >> api-key.txt\nfi\n./llama-server --version\nprintf '\\''Runtime installed. API key is in serverfiles/api-key.txt; model downloads on first start.\\n'\\''\n'",
+    "SkipOnFailure": false
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "FieldName": "Model",
+    "DisplayName": "Hugging Face model",
+    "DefaultValue": "Qwen/Qwen2.5-3B-Instruct-GGUF:Q4_K_M",
+    "InputType": "text",
+    "Description": "Model repository and quantization. First start downloads about 2.1 GB; subsequent starts use the instance cache.",
+    "Category": "LLM",
+    "Subcategory": "Inference",
+    "ParamFieldName": "Model",
+    "IncludeInCommandLine": false,
+    "EnumValues": {}
+  },
+  {
+    "FieldName": "Threads",
+    "DisplayName": "CPU threads",
+    "DefaultValue": "12",
+    "InputType": "number",
+    "Description": "Starting value for your Ryzen 5900X. Lower this if other AMP instances need more CPU.",
+    "Category": "LLM",
+    "Subcategory": "Inference",
+    "ParamFieldName": "Threads",
+    "IncludeInCommandLine": false,
+    "EnumValues": {}
+  },
+  {
+    "FieldName": "Context",
+    "DisplayName": "Context tokens",
+    "DefaultValue": "4096",
+    "InputType": "number",
+    "Description": "Context size for short chat rewrites.",
+    "Category": "LLM",
+    "Subcategory": "Inference",
+    "ParamFieldName": "Context",
+    "IncludeInCommandLine": false,
+    "EnumValues": {}
+  },
+  {
+    "FieldName": "BatchThreads",
+    "DisplayName": "Prompt processing threads",
+    "DefaultValue": "12",
+    "InputType": "number",
+    "Description": "Threads used when processing incoming text.",
+    "Category": "LLM",
+    "Subcategory": "Inference",
+    "ParamFieldName": "BatchThreads",
+    "IncludeInCommandLine": false,
+    "EnumValues": {}
+  }
+]
