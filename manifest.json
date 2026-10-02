@@ -5,6 +5,7 @@
   ],
   "origin": "https://github.com/tomtenberge/amp-templates.git",
   "url": "https://github.com/tomtenberge/amp-templates",
+  Meta.DisplayImageSource=url:https://github.com/ggml-org.png
   "imagefile": "",
   "prefix": "MerteLLM",
   "repotype": "AppTemplates"
