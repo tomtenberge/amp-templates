@@ -1,5 +1,13 @@
 [
   {
+  "UpdateStageName": "Check runtime library dependencies",
+  "UpdateSourcePlatform": "Linux",
+  "UpdateSource": "Executable",
+  "UpdateSourceData": "/bin/bash",
+  "UpdateSourceArgs": "-c \"ldd ./yoda-llm/serverfiles/llama-server\"",
+  "SkipOnFailure": true
+}
+  {
     "UpdateStageName": "Download pinned Ubuntu x64 CPU runtime",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "FetchURL",
