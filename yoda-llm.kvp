@@ -4,6 +4,7 @@ Meta.OS=Linux
 Meta.Arch=x86_64
 Meta.Author=Merte
 Meta.URL=https://github.com/ggml-org/llama.cpp
+Meta.DisplayImageSource=url:https://github.com/ggml-org.png
 Meta.ConfigManifest=yoda-llmconfig.json
 Meta.ConfigRoot=yoda-llm.kvp
 Meta.MinAMPVersion=2.4.5.4
