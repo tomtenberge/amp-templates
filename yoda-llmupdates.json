@@ -15,7 +15,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c 'set -eu\ncd ./yoda-llm/serverfiles\nstage=$(mktemp -d ./extract.XXXXXX)\ntar -xzf runtime.tar.gz -C \"$stage\"\nserver=$(find \"$stage\" -type f -name llama-server -print -quit)\ntest -n \"$server\"\nbindir=$(dirname \"$server\")\ncp -a \"$bindir/.\" .\nchmod +x ./llama-server\nmkdir -p cache\nif [ ! -s api-key.txt ]; then\n  umask 077\n  od -An -N32 -tx1 /dev/urandom | tr -d '\\'' \\n'\\'' > api-key.txt\n  printf '\\''\\n'\\'' >> api-key.txt\nfi\n./llama-server --version\nprintf '\\''Runtime installed. API key is in serverfiles/api-key.txt; model downloads on first start.\\n'\\''\n'",
+    "UpdateSourceArgs": "-o pipefail -c \"printf %s c2V0IC1ldQpjZCAuL3lvZGEtbGxtL3NlcnZlcmZpbGVzCnN0YWdlPSQobWt0ZW1wIC1kIC4vZXh0cmFjdC5YWFhYWFgpCnRhciAteHpmIHJ1bnRpbWUudGFyLmd6IC1DICIkc3RhZ2UiCnNlcnZlcj0kKGZpbmQgIiRzdGFnZSIgLXR5cGUgZiAtbmFtZSBsbGFtYS1zZXJ2ZXIgLXByaW50IC1xdWl0KQp0ZXN0IC1uICIkc2VydmVyIgpiaW5kaXI9JChkaXJuYW1lICIkc2VydmVyIikKY3AgLWEgIiRiaW5kaXIvLiIgLgpjaG1vZCAreCAuL2xsYW1hLXNlcnZlcgpta2RpciAtcCBjYWNoZQppZiBbICEgLXMgYXBpLWtleS50eHQgXTsgdGhlbgogIHVtYXNrIDA3NwogIG9kIC1BbiAtTjMyIC10eDEgL2Rldi91cmFuZG9tIHwgdHIgLWQgJyBcbicgPiBhcGkta2V5LnR4dAogIHByaW50ZiAnXG4nID4+IGFwaS1rZXkudHh0CmZpCi4vbGxhbWEtc2VydmVyIC0tdmVyc2lvbgpwcmludGYgJ1J1bnRpbWUgaW5zdGFsbGVkLiBBUEkga2V5IGlzIGluIHNlcnZlcmZpbGVzL2FwaS1rZXkudHh0OyBtb2RlbCBkb3dubG9hZHMgb24gZmlyc3Qgc3RhcnQuXG4nCg== | base64 --decode | /bin/bash\"",
     "SkipOnFailure": false
   }
 ]
