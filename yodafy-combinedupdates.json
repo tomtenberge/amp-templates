@@ -1,0 +1,32 @@
+[
+  {
+    "UpdateStageName": "Download llama.cpp CPU runtime",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://github.com/ggml-org/llama.cpp/releases/download/b11338/llama-b11338-bin-ubuntu-x64.tar.gz",
+    "UpdateSourceTarget": "{{$FullBaseDir}}",
+    "UpdateSourceArgs": "runtime.tar.gz",
+    "OverwriteExistingFiles": true,
+    "UnzipUpdateSource": false,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Download Yodafy gateway",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://raw.githubusercontent.com/tomtenberge/amp-templates/main/yodafy_server.py",
+    "UpdateSourceTarget": "{{$FullBaseDir}}",
+    "UpdateSourceArgs": "yodafy_server.py",
+    "OverwriteExistingFiles": true,
+    "UnzipUpdateSource": false,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Install and validate runtime",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-o pipefail -c \"printf %s c2V0IC1ldQpjZCAuL3lvZGFmeS1jb21iaW5lZC9zZXJ2ZXJmaWxlcwpzdGFnZT0kKG1rdGVtcCAtZCAuL2V4dHJhY3QuWFhYWFhYKQp0YXIgLXh6ZiBydW50aW1lLnRhci5neiAtQyAiJHN0YWdlIgpzZXJ2ZXI9JChmaW5kICIkc3RhZ2UiIC10eXBlIGYgLW5hbWUgbGxhbWEtc2VydmVyIC1wcmludCAtcXVpdCkKdGVzdCAtbiAiJHNlcnZlciIKYmluZGlyPSQoZGlybmFtZSAiJHNlcnZlciIpCmNwIC1hICIkYmluZGlyLy4iIC4KY2htb2QgK3ggLi9sbGFtYS1zZXJ2ZXIKL3Vzci9iaW4vcHl0aG9uMyAtbSBweV9jb21waWxlIHlvZGFmeV9zZXJ2ZXIucHkKbGRkIC4vbGxhbWEtc2VydmVyCi4vbGxhbWEtc2VydmVyIC0tdmVyc2lvbgpwcmludGYgJ1lvZGFmeSBpbnN0YWxsZWQuIEtleXMgd2lsbCBiZSBnZW5lcmF0ZWQgb24gZmlyc3Qgc3RhcnQuXG4nCg== | base64 --decode | /bin/bash\"",
+    "SkipOnFailure": false
+  }
+]

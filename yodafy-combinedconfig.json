@@ -1,0 +1,42 @@
+[
+  {
+    "FieldName": "Model",
+    "DisplayName": "Model",
+    "InputType": "text",
+    "DefaultValue": "Qwen/Qwen2.5-3B-Instruct-GGUF:Q4_K_M",
+    "Category": "Yodafy",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "Model",
+    "EnumValues": {}
+  },
+  {
+    "FieldName": "Threads",
+    "DisplayName": "CPU threads",
+    "InputType": "number",
+    "DefaultValue": "12",
+    "Category": "Yodafy",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "Threads",
+    "EnumValues": {}
+  },
+  {
+    "FieldName": "Context",
+    "DisplayName": "Context tokens",
+    "InputType": "number",
+    "DefaultValue": "4096",
+    "Category": "Yodafy",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "Context",
+    "EnumValues": {}
+  },
+  {
+    "FieldName": "Timeout",
+    "DisplayName": "Rewrite timeout (seconds)",
+    "InputType": "number",
+    "DefaultValue": "15",
+    "Category": "Yodafy",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "Timeout",
+    "EnumValues": {}
+  }
+]
