@@ -1,0 +1,9 @@
+[
+  {
+    "Protocol": "TCP",
+    "Port": 8123,
+    "Ref": "WebPort",
+    "Name": "Home Assistant Web",
+    "Description": "Host port forwarded by QEMU to the Home Assistant VM's TCP port 8123"
+  }
+]

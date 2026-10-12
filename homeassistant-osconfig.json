@@ -1,0 +1,28 @@
+[
+  {
+    "DisplayName": "Virtual CPUs",
+    "Category": "Virtual Machine",
+    "Description": "CPU threads assigned to the VM. Requires a VM restart.",
+    "FieldName": "VCPUs",
+    "ParamFieldName": "VCPUs",
+    "InputType": "number",
+    "MinValue": "2",
+    "MaxValue": "32",
+    "DefaultValue": "2",
+    "IncludeInCommandLine": false,
+    "EnumValues": {}
+  },
+  {
+    "DisplayName": "Memory (MiB)",
+    "Category": "Virtual Machine",
+    "Description": "RAM assigned to the VM. Leave enough RAM for Ubuntu and other AMP instances. Requires a VM restart.",
+    "FieldName": "MemoryMiB",
+    "ParamFieldName": "MemoryMiB",
+    "InputType": "number",
+    "MinValue": "2048",
+    "MaxValue": "65536",
+    "DefaultValue": "4096",
+    "IncludeInCommandLine": false,
+    "EnumValues": {}
+  }
+]
