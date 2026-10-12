@@ -1,5 +1,5 @@
 Meta.DisplayName=Home Assistant OS (QEMU, experimental)
-Meta.Description=Home Assistant OS virtual machine managed by AMP on an Ubuntu x86_64 host. Manual first-time disk preparation required.
+Meta.Description=Experimental Home Assistant OS VM inside an AMP container. Uses software emulation by default. Manual disk preparation required.
 Meta.OS=Linux
 Meta.Arch=x86_64
 Meta.Author=Local
@@ -11,9 +11,12 @@ Meta.MetaConfigManifest=homeassistant-osmetaconfig.json
 Meta.ConfigRoot=homeassistant-os.kvp
 Meta.MinAMPVersion=2.8.0.0
 Meta.DockerRequired=False
-Meta.ContainerPolicy=NotSupported
-Meta.ContainerPolicyReason=This initial profile launches host QEMU with host KVM access. Do not deploy this instance in an AMP container.
-Meta.ConfigVersion=1
+Meta.SpecificDockerImage=cubecoders/ampbase:debian
+Meta.DockerBaseReadOnly=False
+Meta.ExtraContainerPackages=["qemu-system-x86","qemu-utils","ovmf","xz-utils"]
+Meta.ContainerPolicy=SupportedOnLinux
+Meta.ContainerPolicyReason=QEMU runs inside the AMP base container. Default software emulation needs no KVM device mapping; hardware acceleration requires separately configured KVM access.
+Meta.ConfigVersion=2
 Meta.AppConfigId=1290976b-cbe5-448a-b0d4-39d74aad50a1
 Meta.ImportableExtensions=[]
 App.DisplayName=Home Assistant OS VM
@@ -21,8 +24,8 @@ App.RootDir=./haos/
 App.BaseDirectory=./haos/
 App.ExecutableLinux=/usr/bin/qemu-system-x86_64
 App.WorkingDir=.
-App.CommandLineArgs=-name amp-haos -machine q35,accel=kvm -cpu host -smp {{VCPUs}} -m {{MemoryMiB}} -drive if=pflash,format=raw,unit=0,readonly=on,file=OVMF_CODE.fd -drive if=pflash,format=raw,unit=1,file=OVMF_VARS.fd -device virtio-scsi-pci,id=scsi0 -drive if=none,id=haosdisk,format=qcow2,file=haos.qcow2 -device scsi-hd,drive=haosdisk,bus=scsi0.0,bootindex=1 -nic user,model=virtio-net-pci,hostfwd=tcp:{{$ApplicationIPBinding}}:{{$WebPort}}-:8123 -display none -monitor stdio -serial file:serial.log
-App.AppSettings={"VCPUs":"2","MemoryMiB":"4096"}
+App.CommandLineArgs=-name amp-haos -machine q35 {{EngineArgs}} -smp {{VCPUs}} -m {{MemoryMiB}} -drive if=pflash,format=raw,unit=0,readonly=on,file=OVMF_CODE.fd -drive if=pflash,format=raw,unit=1,file=OVMF_VARS.fd -device virtio-scsi-pci,id=scsi0 -drive if=none,id=haosdisk,format=qcow2,file=haos.qcow2 -device scsi-hd,drive=haosdisk,bus=scsi0.0,bootindex=1 -nic user,model=virtio-net-pci,hostfwd=tcp:{{$ApplicationIPBinding}}:{{$WebPort}}-:8123 -display none -monitor stdio -serial file:serial.log
+App.AppSettings={"VCPUs":"2","MemoryMiB":"4096","EngineArgs":"-accel tcg,thread=multi -cpu max"}
 App.EnvironmentVariables={}
 App.UseLinuxIOREDIR=False
 App.ExitMethod=String

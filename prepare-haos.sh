@@ -12,7 +12,6 @@ destination=$2
 for tool in qemu-img xz realpath mktemp; do
     command -v "$tool" >/dev/null || { printf 'Missing command: %s\n' "$tool" >&2; exit 1; }
 done
-[[ -r /dev/kvm && -w /dev/kvm ]] || { echo 'This account needs read/write access to /dev/kvm.' >&2; exit 1; }
 firmware_dir=/usr/share/OVMF
 if [[ -f $firmware_dir/OVMF_CODE_4M.fd && -f $firmware_dir/OVMF_VARS_4M.fd ]]; then
     code_file=$firmware_dir/OVMF_CODE_4M.fd

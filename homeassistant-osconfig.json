@@ -1,5 +1,19 @@
 [
   {
+    "DisplayName": "Virtualization engine",
+    "Category": "Virtual Machine",
+    "Description": "Software emulation works without device mapping but is substantially slower. Select KVM only after /dev/kvm is mapped into the AMP container and its AMP user has read/write access. Restart the VM after changing this setting.",
+    "FieldName": "EngineArgs",
+    "ParamFieldName": "EngineArgs",
+    "InputType": "enum",
+    "DefaultValue": "-accel tcg,thread=multi -cpu max",
+    "IncludeInCommandLine": false,
+    "EnumValues": {
+      "-accel tcg,thread=multi -cpu max": "Software emulation (no KVM device required)",
+      "-accel kvm -cpu host": "KVM (requires configured device access)"
+    }
+  },
+  {
     "DisplayName": "Virtual CPUs",
     "Category": "Virtual Machine",
     "Description": "CPU threads assigned to the VM. Requires a VM restart.",

@@ -1,10 +1,10 @@
 [
   {
-    "UpdateStageName": "Check KVM access and prepared VM files",
+    "UpdateStageName": "Check QEMU and prepared VM files",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"test -x /usr/bin/qemu-system-x86_64 && test -r /dev/kvm && test -w /dev/kvm && test -s haos/haos.qcow2 && test -w haos/haos.qcow2 && test -s haos/OVMF_CODE.fd && test -s haos/OVMF_VARS.fd && test -w haos/OVMF_VARS.fd || { echo 'HAOS preflight failed: check QEMU, amp user KVM permissions, and prepared files under the instance haos directory.' >&2; exit 1; }\"",
+    "UpdateSourceArgs": "-c \"test -x /usr/bin/qemu-system-x86_64 && test -s haos/haos.qcow2 && test -w haos/haos.qcow2 && test -s haos/OVMF_CODE.fd && test -s haos/OVMF_VARS.fd && test -w haos/OVMF_VARS.fd || { echo 'HAOS preflight failed: check installed QEMU packages and prepared files under the instance haos directory.' >&2; exit 1; }\"",
     "SkipOnFailure": false,
     "RunInBackground": false
   }
